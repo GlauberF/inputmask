@@ -1241,7 +1241,6 @@ Para implementar em angularjs
         return {
           restrict: 'A',
           link: function(scope, el, attrs) {
-            console.log('chamouuuu diretiva')
 
             $(el).inputmask("phone", {
               onUnMask: function(maskedValue, unmaskedValue) {

@@ -1216,6 +1216,24 @@ $(document).ready(function(){
 });
 ```
 
+### get country
+```javascript
+$('#forinputmask').inputmask("phone", {    
+    onKeyValidation: function () { 
+        if( $('#forinputmask').inputmask('unmaskedvalue') ) { /* we either show country only when mask is fully defined, and won't change by typing further */
+          $('.phone-country').text($(this).inputmask("getmetadata")["cd"]);
+          console.log($(this).inputmask("getmetadata")["cd"]) 
+        } else {
+          $('.phone-country').text(''); /* ,or we clear the country code */
+        };
+    },
+    "oncleared": function(){
+      $('.phone-country').text(''); /* clear the country code on empty mask */
+    }
+});
+```
+
+
 ## jQuery.clone
 When cloning a inputmask, the inputmask reactivates on the first event (mouseenter, focus, ...) that happens to the input. If you want to set a value on the cloned inputmask and you want to directly reactivate the masking you have to use $(input).inputmask("setvalue", value)
 

@@ -139,7 +139,7 @@ $(document).ready(function(){
 });
 ```
 
-### identification and automatic formatting
+### identification and automatic formatting phone for country
 ```html
 <input id="aplica_format_tel"/>
 ```

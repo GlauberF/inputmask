@@ -1,0 +1,25 @@
+{
+  "name": "inputMaskGlauber",
+  "version": "1.0.0",
+  "homepage": "https://github.com/GlauberF/inputmask",
+  "authors": [
+    "Glauber Funez <glauber@vimbo.com.br>"
+  ],
+  "description": "Inputmask is a javascript library which creates an input mask.  Inputmask can run against vanilla javascript, jQuery and jqlite.",
+  "main": [
+    "./index.js",
+    "./css/inputmask.css"
+  ],
+  "keywords": ["jquery", "plugins", "input", "form", "inputmask", "mask"],
+  "license": "http://opensource.org/licenses/mit-license.php",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": ">=1.7"
+  }
+}

@@ -1218,3 +1218,48 @@ $(document).ready(function(){
 
 ## jQuery.clone
 When cloning a inputmask, the inputmask reactivates on the first event (mouseenter, focus, ...) that happens to the input. If you want to set a value on the cloned inputmask and you want to directly reactivate the masking you have to use $(input).inputmask("setvalue", value)
+
+
+## Angularjs
+Para implementar em angularjs
+
+```javascript
+/*
+ * @Author: Glauber Funez
+ * @Date:   2018-06-28 13:54:04
+ * @Last Modified by:   Glauber Funez
+ * @Last Modified time: 2018-06-28 14:17:29
+ */
+
+(function() {
+    'use strict';
+
+    // glauber-mask-fone
+    angular
+      .module('app')
+      .directive('glauberMaskFone', function() {
+        return {
+          restrict: 'A',
+          link: function(scope, el, attrs) {
+            console.log('chamouuuu diretiva')
+
+            $(el).inputmask("phone", {
+              onUnMask: function(maskedValue, unmaskedValue) {
+                //do something with the value
+                console.log(maskedValue)
+                console.log(unmaskedValue)
+                return unmaskedValue;
+              }
+            }, scope.$eval(attrs.glauberMaskFone));
+
+            $(el).on('change', function(e) {
+              scope.$eval(attrs.ngModel + "='" + el.val() + "'");
+            });
+          }
+        }
+      });
+
+
+
+}());
+```

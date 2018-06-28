@@ -32,14 +32,14 @@ Highlights:
 
 ## Setup
 ### dependencyLibs
-Inputmask can run against different javascript libraries.  
-You can choose between:
+A máscara de entrada pode ser executada em diferentes bibliotecas de javascript.
+Você pode escolher entre:
 - inputmask.dependencyLib (vanilla)
 - inputmask.dependencyLib.jquery
 - inputmask.dependencyLib.jqlite
 - .... (others are welcome)
 
-### Classic web with <script\> tag
+### Web clássica com tag <script\>
 Inclua os arquivos js que você pode encontrar na pasta `dist`.
 
 Se você quiser incluir o Inputmask e todas as extensões. (com jQuery como dependencylib)

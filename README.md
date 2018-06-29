@@ -1250,33 +1250,48 @@ Para implementar em angularjs
  */
 
 (function() {
-    'use strict';
+  'use strict';
 
-    // glauber-mask-fone
-    angular
-      .module('app')
-      .directive('glauberMaskFone', function() {
-        return {
-          restrict: 'A',
-          link: function(scope, el, attrs) {
+  // glauber-mask-fone - identificador do componente
+  // glauber-mask-fone-full-object="true"  - retorna objeto completo, incluido o país
+  angular
+    .module('app')
+    .directive('glauberMaskFone', function() {
+      return {
+        restrict: 'A',
+        scope: {
+          ngModel: '='
+        },
+        link: function($scope, $element, $attrs) {
+          $($element).inputmask("phone", $scope.$eval($attrs.glauberMaskFone));
 
-            $(el).inputmask("phone", {
-              onUnMask: function(maskedValue, unmaskedValue) {
-                //do something with the value
-                console.log(maskedValue)
-                console.log(unmaskedValue)
-                return unmaskedValue;
-              }
-            }, scope.$eval(attrs.glauberMaskFone));
+          $($element).on('keypress', function(e) {
+            
+            // if ($($element).inputmask("isComplete")){
+            //   console.log('complete', )
+            // }
 
-            $(el).on('change', function(e) {
-              scope.$eval(attrs.ngModel + "='" + el.val() + "'");
-            });
-          }
+            var dados = {
+              value: $element.val(),
+              pais: $($element).inputmask("getmetadata")
+            }
+
+            if ($attrs.glauberMaskFoneFullObject) {
+              $scope.$eval(function() {
+                $scope.ngModel = dados;
+              });
+            } else {
+              $scope.$eval(function() {
+                $scope.ngModel = $element.val();
+              });
+            }
+
+          });
         }
-      });
-
+      };
+    });
 
 
 }());
+
 ```

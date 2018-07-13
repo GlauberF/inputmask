@@ -1246,50 +1246,67 @@ Para implementar em angularjs
  * @Author: Glauber Funez
  * @Date:   2018-06-28 13:54:04
  * @Last Modified by:   Glauber Funez
- * @Last Modified time: 2018-06-28 14:17:29
+ * @Last Modified time: 2018-07-12 17:34:03
  */
 
 (function() {
   'use strict';
 
-  // glauber-mask-fone - identificador do componente
-  // glauber-mask-fone-full-object="true"  - retorna objeto completo, incluido o país
+  // vimbo-mask-fone - identificador do componente
+  // vimbo-mask-fone-full-object="true"  - retorna objeto completo, incluido o país
   angular
     .module('app')
-    .directive('glauberMaskFone', function() {
+    .directive('vimboMaskFone', function($timeout) {
       return {
         restrict: 'A',
         scope: {
           ngModel: '='
         },
         link: function($scope, $element, $attrs) {
-          $($element).inputmask("phone", $scope.$eval($attrs.glauberMaskFone));
 
-          $($element).on('keypress', function(e) {
-            
-            // if ($($element).inputmask("isComplete")){
-            //   console.log('complete', )
-            // }
-
-            var dados = {
-              value: $element.val(),
-              pais: $($element).inputmask("getmetadata")
-            }
-
-            if ($attrs.glauberMaskFoneFullObject) {
+          $timeout(function() {
+            // $($element).inputmask("phone", $scope.$eval($attrs.vimboMaskFone));
+            if (!$element.val()) {
               $scope.$eval(function() {
-                $scope.ngModel = dados;
-              });
-            } else {
-              $scope.$eval(function() {
-                $scope.ngModel = $element.val();
+                $element.val(55)
               });
             }
 
+            $element.inputmask("phone", $scope.$eval($attrs.vimboMaskFone));
+
+            $element.on('keyup', function(e) {
+
+              var dados = {
+                value: $element.val(),
+                pais: $($element).inputmask("getmetadata")
+              }
+
+              if ($($element).inputmask("isComplete")){
+                // $element.css("border","1px solid #cccccc");
+
+                if ($attrs.vimboMaskFoneFullObject) {
+                  $scope.$eval(function() {
+                    $scope.ngModel = dados;
+                  });
+                } else {
+                  $scope.$eval(function() {
+                    $scope.ngModel = $element.val();
+                  });
+                }
+              } else {
+                // $element.css("border","1px solid red");                
+                $scope.$eval(function() {
+                  $scope.ngModel = 55;
+                });
+              }
+
+            });
           });
         }
       };
-    });
+    });    
+
+
 
 
 }());

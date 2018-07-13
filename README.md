@@ -1239,7 +1239,8 @@ When cloning a inputmask, the inputmask reactivates on the first event (mouseent
 
 
 ## Angularjs
-Para implementar em angularjs
+Para implementar em angularjs<br/>
+No exemplo forço o uso do 55 Brasil
 
 ```javascript
 /*
